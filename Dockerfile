@@ -6,7 +6,7 @@ RUN mkdir application
 ## Step 2:
 COPY app.py /application/
 
-ADD ./model_data/ /application/model_data
+COPY ./model_data/ /application/model_data
 
 ## Step 3:
 # Install packages from requirements.txt./
@@ -19,6 +19,6 @@ EXPOSE 80 8000
 WORKDIR /application/
 
 ## Step 5:
-CMD python app.py
+CMD ["python","app.py"]
 
 
