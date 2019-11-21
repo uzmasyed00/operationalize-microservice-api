@@ -3,14 +3,15 @@ pipeline{
     stages{
         stage('Lint HTML'){
             steps{
-                sh 'tidy -q -e *.html'
+                //sh 'tidy -q -e *.html'
+                sh 'Going to lint the file'
             }
         }
         stage('Build docker image'){
             steps{
                 sh 'Going to build docker image'
-                withAWS(credentials:'aws-static') {
-                    s3Upload(file:'index.html', bucket:'jenkins-pipeline-project3', path:'index.html')
+                //withAWS(credentials:'aws-static') {
+                   //s3Upload(file:'index.html', bucket:'jenkins-pipeline-project3', path:'index.html')
                 }
 
             }
