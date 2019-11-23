@@ -1,13 +1,14 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Lint HTML') {
+        stage('Linting project files') {
             steps {
                 //sh 'tidy -q -e *.html'
-                sh 'Going to lint the file'
+                sh 'pylint app.py'
+                sh 'hadolint Dockerfile'
             }
         }
-        stage('Build docker image') {
+        /*stage('Build docker image') {
             steps {
                 sh 'Going to build docker image'
                 //withAWS(credentials:'aws-static') {
@@ -20,6 +21,6 @@ pipeline {
             steps {
                 sh 'Going to deploy Docker container'
             }
-        }
+        }*/
     }
 }
