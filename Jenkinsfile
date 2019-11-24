@@ -8,6 +8,6 @@ node{
     }
     stage('Build Docker image'){
         sh 'echo "I am going to build Docker image"'
-        dockerImage = docker.build(flask-web-app:${env.BUILD_ID})
+        dockerImage = docker.build("flask-web-app:${env.BUILD_ID}")
     }
 }
