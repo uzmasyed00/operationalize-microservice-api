@@ -1,0 +1,51 @@
+pipeline {
+    agent { dockerfile true }
+    stages {
+        stage('Linting project files') {
+            steps {
+                //sh 'tidy -q -e *.html'
+                //sh 'pylint app.py'
+                //sh 'hadolint Dockerfile'
+                //sh 'python -v'
+                sh 'echo 'I am going to lint relevant project files''
+
+            }
+        }
+
+        stage('Create Kubernetes cluster in AWS') {
+            steps {
+                sh 'echo 'I am going to create cluster using EKS''
+                sh 'eksctl create cluster --name trial ' +
+                        '--version 1.14 --region us-west-2 ' +
+                        '--nodegroup-name standard-workers ' +
+                        '--node-type t3.medium ' +
+                        '--nodes 3 --nodes-min 1 ' +
+                        '--nodes-max 4 --managed'
+            }
+        }
+
+        stage('Store Kubernetes cluster config') {
+            steps {
+                sh 'echo 'I am going to store cluster config''
+
+            }
+        }
+
+        stage('Build docker image') {
+            steps {
+                sh 'Going to build docker image'
+
+            }
+
+        }
+
+        stage('Upload docker image to Docker hub') {
+            steps {
+                sh 'Going to upload docker image to Docker hub'
+            }
+
+        }
+
+
+    }
+}
