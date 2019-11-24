@@ -1,5 +1,5 @@
 node{
-    def dockerImage
+    def webAppImage
     stage('Trying Scripted Pipleine'){
         sh 'echo "I am going to run scripted pipeline"'
     }
@@ -8,12 +8,12 @@ node{
     }
     stage('Build Docker image'){
         sh 'echo "I am going to build Docker image"'
-        dockerImage = docker.build("flask-web-app:${env.BUILD_ID}")
+        webAppImage = docker.build("flask-web-app:${env.BUILD_ID}")
     }
     stage('Upload Docker image to Dockerhub'){
         sh 'echo "I am going to build Docker image"'
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
+            webAppImage.push("${env.BUILD_NUMBER}")
             //app.push("latest")
         }
     }
