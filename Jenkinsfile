@@ -10,4 +10,10 @@ node{
         sh 'echo "I am going to build Docker image"'
         dockerImage = docker.build("flask-web-app:${env.BUILD_ID}")
     }
+    stage('Upload Docker image to Dockerhub'){
+        sh 'echo "I am going to build Docker image"'
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+            //app.push("latest")
+    }
 }
