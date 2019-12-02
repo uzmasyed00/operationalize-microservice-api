@@ -6,10 +6,10 @@ pipeline {
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
-    agent { dockerfile true }
+    agent any
 
     stages {
-        stage('Linting project files') {
+        /*stage('Linting project files') {
             steps {
                 //sh 'tidy -q -e *.html'
                 //sh 'pylint app.py'
@@ -19,7 +19,7 @@ pipeline {
                     sh 'echo 'I am going to lint relevant project files''
                 }
             }
-        }
+        }*/
 
         /*stage('Create Kubernetes cluster in AWS') {
             steps {
