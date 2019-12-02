@@ -15,8 +15,9 @@ pipeline {
                 //sh 'pylint app.py'
                 //sh 'hadolint Dockerfile'
                 //sh 'python -v'
-                sh 'echo 'I am going to lint relevant project files''
-
+                script{
+                    sh 'echo 'I am going to lint relevant project files''
+                }
             }
         }
 
