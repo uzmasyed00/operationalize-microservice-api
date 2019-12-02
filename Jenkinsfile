@@ -2,7 +2,7 @@ pipeline {
     //def dockerImage
     //def registry
     environment {
-        registry = "https://hub.docker.com/repository/docker/uzmasyed00/capstone"
+        registry = "uzmasyed00/capstone"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
@@ -43,7 +43,7 @@ pipeline {
         stage('Build docker image') {
             steps{
                 script {
-                    docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
