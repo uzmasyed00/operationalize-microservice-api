@@ -1,6 +1,6 @@
 pipeline {
-    def dockerImage
-    def registry
+    //def dockerImage
+    //def registry
     environment {
         registry = "https://hub.docker.com/repository/docker/uzmasyed00/capstone"
         registryCredential = 'dockerhub'
