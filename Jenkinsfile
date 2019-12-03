@@ -60,9 +60,12 @@ pipeline {
 
         stage('Deploying to EKS') {
             steps {
-                withAWS(credentials: 'kubernetes-credentials', region: 'us-east-2') {
-                    sh 'aws eks --region us-east-2 update-kubeconfig --name uzmasyed00-eks-cluster'
-                    sh 'kubectl apply -f helloworld.yaml'
+                script {
+                    withAWS(credentials: 'kubernetes-credentials', region: 'us-east-2') {
+                        sh 'pip3 install --upgrade awscli'
+                        sh 'aws eks --region us-east-2 update-kubeconfig --name uzmasyed00-eks-cluster'
+                        sh 'kubectl apply -f /home/ubuntu/.kube/helloworld.yaml'
+                    }
                 }
             }
         }
