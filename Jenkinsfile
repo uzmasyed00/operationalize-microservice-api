@@ -1,6 +1,4 @@
 pipeline {
-    //def dockerImage
-    //def registry
     environment {
         registry = "uzmasyed00/capstone"
         registryCredential = 'dockerhub'
@@ -9,17 +7,14 @@ pipeline {
     agent any
 
     stages {
-        /*stage('Linting project files') {
+        stage('Linting project files') {
             steps {
-                //sh 'tidy -q -e *.html'
-                //sh 'pylint app.py'
-                //sh 'hadolint Dockerfile'
                 //sh 'python -v'
                 script{
-                    sh 'echo 'I am going to lint relevant project files''
+                    sh 'pylint app.py'
                 }
             }
-        }*/
+        }
 
         stage('Build docker image') {
             steps{
@@ -45,7 +40,8 @@ pipeline {
                     withAWS(credentials: 'kubernetes-credentials', region: 'us-east-2') {
                         sh 'pip3 install --upgrade awscli'
                         sh 'aws eks --region us-east-2 update-kubeconfig --name uzmasyed00-eks-cluster'
-                        sh 'kubectl apply -f /home/ubuntu/.kube/helloworld.yaml'
+                        sh 'kubectl apply -f /home/ubuntu/.kube/flaskapp.yaml'
+                        sh 'kubectl apply -f /home/ubuntu/.kube/flaskapp-service.yaml'
                     }
                 }
             }
