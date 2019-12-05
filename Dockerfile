@@ -19,6 +19,6 @@ EXPOSE 80 8000
 WORKDIR /application/
 
 ## Step 5:
-CMD ["python","app.py"]
+CMD "python","app.py"
 
 
