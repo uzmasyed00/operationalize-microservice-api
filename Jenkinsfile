@@ -9,9 +9,9 @@ pipeline {
     stages {
         stage('Linting project files') {
             steps {
-                //sh 'python -v'
                 script{
-                    sh 'pylint app.py'
+                    //sh 'pylint app.py'
+                    sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
                 }
             }
         }
