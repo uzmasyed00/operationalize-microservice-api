@@ -11,6 +11,7 @@ COPY ./model_data/ /application/model_data
 ## Step 3:
 # Install packages from requirements.txt./
 # hadolint ignore=DL3013
+#RUN pip install -r requirements.txt 
 RUN pip install flask numpy pandas scikit-learn==0.20.3 pylint
 
 ## Step 4:
