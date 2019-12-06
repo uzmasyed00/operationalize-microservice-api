@@ -10,9 +10,10 @@ pipeline {
         stage('Linting project files') {
             steps {
                 script{
+                    sh 'echo "going to lint files"'
                     //sh 'pylint app.py'
                     //sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
-                    sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3007 - <./Dockerfile'
+                    //sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3007 - <./Dockerfile'
                 }
             }
         }
